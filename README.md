@@ -1,17 +1,23 @@
 # Recommendations with IBM
 ## Introduction
-For this project you will analyze the interactions that users have with articles on the IBM Watson Studio platform, and make recommendations to them about new articles you think they will like. Below you can see an example of what the dashboard could look like displaying articles on the IBM Watson Platform.
+This project made use of data from IBM Watson Studio platform to build recommendation engines about new articles one think they will like. Below you can see an example of what the dashboard could look like displaying articles on the IBM Watson Platform.
 
 ## In this project, I carried out the following tasks
 
 ## I. Exploratory Data Analysis
-   I explored the data used int the project in order to draw some insights which I then used to answer key questions throughout the rest of the notebook.
+   The data exploration stage of the project was meant to look at the structure of the data and estimate descriptive statistics of the data. I also used a histogram to show the pictoral represention of the data. The descriptive analysis also enabled me to answer specific questions about the data like:
+   - The number of unique articles that have an interaction with a user.
+   - The number of unique articles in the dataset (whether they have any interactions or not).
+   - The number of unique users in the dataset. (excluding null values)
+   - The number of user-article interactions in the dataset.
 
 ## II. Rank Based Recommendations
-   I started in building recommendations by looking at most popular articles simply based on the most interactions with users. Since there are no ratings for any of the articles, popularity of the articles was based on the interactions with users. Such articles were recommended to new users (or anyone depending on what we know about them). Here I provided two functions to get n top articles names and n top articles ids.
+   This recommendation process focues on the popularity of an article which used the number of times each user has interacted on an article to make recommendations for other neighboring users. Here I completed the functions for:
+   - getting top articles from a DataFrame for a specific number of query per time
+   - getting associated article ids used to estimate other articles that could be recommended to a user
 
 ## III. User-User Based Collaborative Filtering
-   In order to build better recommendations for the users of IBM's platform, ssers that are similar in terms of the items they have interacted with were considered. These items were then recommended to the similar users. Here specific insights were extracted as follows: 
+   In order to build better recommendations for the users of IBM's platform, users that are similar in terms of the items they have interacted with were considered. I reshaped the data frame to convert the articles column to a column headers while assigning where anteraction occured to a 1 and 0 otherwise  These items were then recommended to the similar users. Here specific insights were extracted as follows: 
    - Each user should only appear in each row once.
    - Each article should only show up in one column.
    - If a user has interacted with an article, then place a 1 where the user-row meets for that article-column irrespective of how 
